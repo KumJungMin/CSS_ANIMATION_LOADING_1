@@ -1,0 +1,53 @@
+/* #body에서 정중앙에 오게 만든다. */
+body {
+  margin: 0; /*박스외부 공간  */
+  display: flex; /*내부요소들이 같은 넓이,높이로 차례로 배치 */
+  justify-content: center; /*요소의 좌우 정렬 상태를 가운데로 설정*/
+  align-items: center; /*요소는 플렉스 컨테이너의 가운데에 배치*/
+  height: 100vh;
+}
+
+.loading span {
+  display: inline-block; /* #안의 박스들을 한줄로 세우기 */
+  width: 10px;
+  height: 10px;
+  background-color: gray;
+  border-radius: 50%;
+  animation: loading 1s 0s linear infinite;
+  /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
+}
+.loading span:nth-child(1) {
+  /*nth-child : 형제 사이에서의 순서*/
+  animation-delay: 0s;
+  background-color: red;
+}
+.loading span:nth-child(2) {
+  animation-delay: 0.2s;
+  background-color: orange;
+}
+.loading span:nth-child(3) {
+  animation-delay: 0.4s;
+  background-color: yellowgreen;
+}
+
+/* 키프레임이라는 이벤트 명 */
+/* https://pro-self-studier.tistory.com/108 */
+/*  CSS 애니메이션에서 구간을 정하고 각 구간별로 어떤 스타일을 적용시킬지  */
+/* animation-name : 사용자가 직접 지정한 이름, @keyframes 가 적용될 애니메이션의 이름
+스테이지 : from - to 로 0~100% 의 구간
+CSS 스타일 : 각 스테이지(구간)에 적용시킬 스타일
+ */
+@keyframes loading {
+  0%,
+  100% {
+    opacity: 0;
+    /* 안보였다가 */
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    /* 보였다가 */
+    transform: scale(1.2);
+    /* 1.5배 */
+  }
+}
